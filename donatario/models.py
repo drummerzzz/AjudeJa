@@ -1,4 +1,4 @@
 from django.db import models
 
-class Donation(models.Model):
+class Grantee(models.Model):
     pass
