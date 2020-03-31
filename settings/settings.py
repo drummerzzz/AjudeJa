@@ -25,7 +25,7 @@ SECRET_KEY = 'aal5kh$lus6)_ql74i12o&ui-v=fyt5g70z1=b8-tmkitkt&0j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'doador',
     'doacao',
     'donatario',
-    'home'
+    'home',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -122,3 +123,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'users.User'
+
+
+SEXO_CHOICE = (
+    ('m', 'Masculino'),
+    ('f', 'Feminino')
+)
