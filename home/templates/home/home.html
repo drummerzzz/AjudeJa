@@ -4,31 +4,33 @@
 {% block content %}
   {% include "header.html" %}
   {% include "donatario/modalAjuda.html" %}
-  <div id="ajuda" class="container-full px-5">
+  <div id="ajuda" class="container-full px-md-5">
     <section class="mt-2">
-      <table class="table">
-        <thead style="background-color: #5fbfbf; color: white;">
-          <tr>
-            <th scope="col">Pedido de ajuda</th>
-            <th scope="col">Categoria</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Data</th>
-            <!-- <th scope="col">Whatsapp</th> -->
-            <th scope="col">Ajude já</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for pedido in pedidos %}
+      <div class="table-responsive">
+        <table class="table">
+          <thead style="background-color: #5fbfbf; color: white;">
             <tr>
-              <td>{{pedido.titulo}}</td>
-              <td>{{pedido.categoria}}</td>
-              <td>{{pedido.nome}}</td>
-              <td>{{pedido.data |date:"d/m/Y H:i"}}</td>
-              <td><button class="btn btn-color">Ajude agora</button></td>
+              <th scope="col">Pedido de ajuda</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Data</th>
+              <!-- <th scope="col">Whatsapp</th> -->
+              <th scope="col">Ajude já</th>
             </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {% for pedido in pedidos %}
+              <tr>
+                <td>{{pedido.titulo}}</td>
+                <td>{{pedido.categoria}}</td>
+                <td>{{pedido.nome}}</td>
+                <td>{{pedido.data |date:"d/m/Y H:i"}}</td>
+                <td><button class="btn btn-color">Ajude agora</button></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </section>
   </div>
 {% endblock content %}
