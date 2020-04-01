@@ -9,7 +9,7 @@
       <table class="table">
         <thead style="background-color: #5fbfbf; color: white;">
           <tr>
-            <th scope="col">Titulo</th>
+            <th scope="col">Pedido de ajuda</th>
             <th scope="col">Categoria</th>
             <th scope="col">Nome</th>
             <th scope="col">Data</th>
@@ -18,14 +18,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Sou manicure e por conta do que estamos vivendo estou sem trabalho</td>
-            <td>Cesta básica</td>
-            <td>Joaozinho</td>
-            <th scope="row">10/03/2020</th>
-            <td><button class="btn btn-color">Ajude agora</button></td>
-          </tr>
-       
+          {% for pedido in pedidos %}
+            <tr>
+              <td>{{pedido.titulo}}</td>
+              <td>{{pedido.categoria}}</td>
+              <td>{{pedido.nome}}</td>
+              <td>{{pedido.data |date:"d/m/Y H:i"}}</td>
+              <td><button class="btn btn-color">Ajude agora</button></td>
+            </tr>
+          {% endfor %}
         </tbody>
       </table>
     </section>

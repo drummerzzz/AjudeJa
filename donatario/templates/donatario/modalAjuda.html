@@ -7,19 +7,20 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-              <form action="" class="form-group" method="post">
-                {% for field in form %}
-                    {{field.label_tag}}
-                    {{field}}
-                    {{field.errors}}
-                {% endfor %}
-              </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Salvar</button>
-            </div>
+            <form action="{% url 'donatario:ajuda' %}" class="form-group" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    {% for field in form %}
+                        {{field.label_tag}}
+                        {{field}}
+                        {{field.errors}}
+                    {% endfor %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
