@@ -1,17 +1,31 @@
-<header class="bg-primary text-white">
-  <div class="container">
-    <h1 class="text-center font-weight-bold">Seja um doador</h1>
-    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-      et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-      pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-      laborum.</p>
+{% load static %}
+<header class="text-white py-5">
+  <div class="container pt-5">
+    <h1 class="text-center font-weight-bold mt-2 mb-4">
+      <img src="{% static 'logo.png' %}" >
+    </h1>
+    <div class="row">
+      <div class="col-12 col-md-8 offset-md-2">
+        <h5 class="text-justify" style=" color: grey; line-height: 1.5rem;">
+          AjudeJá.org é uma plataforma sem fins lucrativos que visa ajudar
+          pessoas que estão passando por necessidades e precisam de ajuda urgente. <br> <br>
+          Para ser ajudado, basta clicar no botão abaixo e informar a ajuda que você está precisando. 
+          Ao concluir, nós iremos atrás de pessoas que possam ajudar você nesse momento difícil! <br> <br>
+          <strong>Não desanime</strong>, as coisas irão melhorar <3
+        </h5>
+      </div>
+    </div>
   </div>
-  <div class="container">
+  <div class="container pt-3 pb-5">
     <div class="row">
       <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
-        <a href="" class="btn btn btn-success btn-lg btn-block">
-          Doar agora
+        <button href="" data-toggle="modal" data-target="#exampleModal" class="btn btn btn-danger btn-lg btn-block">
+          Preciso de Ajuda
+        </button>
+      </div>
+      <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 mt-3">
+        <a href="#ajuda" class="btn btn btn-success btn-lg btn-block">
+          Quero Ajudar
         </a>
       </div>
     </div>
