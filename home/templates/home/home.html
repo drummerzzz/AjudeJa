@@ -13,14 +13,16 @@
     </div>
   </div>
   {% if messages %}
-      <div class="row">
-          <ul class="messages">
-              {% for message in messages %}
-              <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-              {% endfor %}
-          </ul>
-      </div>
-    {% endif %}
+  <div class="row">
+    <div class="col-12 pb-3">
+      {% for message in messages %}
+      <h5 class="text-success text-center">
+        <b>{{message}}</b>
+      </h5>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
   <div class="row">
     <div class="col-12 mt-2">
       <div class="table-responsive">
@@ -43,8 +45,10 @@
               <!-- <td class="d-none d-sm-block">{{pedido.nome}}</td>
                 <td class="d-none d-sm-block">{{pedido.data |date:"d/m/Y"}}</td> -->
               <td>
-                <a href="{% url 'home:detalhe' %}?pedido={{pedido.id}}" class="btn btn-color btn-block text-white">Ajude
-                  agora</a>
+                <a href="{% url 'home:detalhe' %}?pedido={{pedido.id}}"
+                class="btn btn-color btn-block text-white">
+                  Quero ajudar
+                </a>
               </td>
             </tr>
             {% endfor %}
