@@ -25,9 +25,11 @@ class DetailTemplateView(View):
         return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
+        context = {}
         pedido_id = request.GET.get('pedido', None)
         pedido = Grantee.objects.filter(id=pedido_id)[0]
         pedido.atender()
-        success = f'https://api.whatsapp.com/send?phone=55{{pedido.getPhone}}&text=Ol%C3%A1%2C%20vi%20seu%20pedido%20de%20ajuda%20no%20AjudeJ%C3%A1.org%20e%20gostaria%20de%20ajudar.%20'
-        return redirect(success)
+        context["pedido"] = pedido
+        context["ajudado"] = True
+        return render(request, self.template_name, context)
     
