@@ -1,27 +1,33 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+    <form action="{% url 'donatario:ajuda' %}" class="form-group" method="post">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Preencha as informações</h5>
+                <h5 class="modal-title"><strong class="text-center">Preencha as informações</strong></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <strong class="px-2 text-center text-danger">ATENÇÃO! <br> Só peça ajuda se REALMENTE estiver precisando <br> para não atrapalhar aqueles que precisam de verdade.</strong>
-            <form action="{% url 'donatario:ajuda' %}" class="form-group" method="post">
-                {% csrf_token %}
-                <div class="modal-body">
+            <div class="modal-body">
+                    {% csrf_token %}
                     {% for field in form %}
                         {{field.label_tag}}
                         {{field}}
                         {{field.errors}}
                     {% endfor %}
                 </div>
+                <div class="modal-body text-center">
+                    <strong class="text-danger">
+                        ATENÇÃO!<br>
+                        Só peça ajuda se REALMENTE estiver precisando <br>
+                        para não atrapalhar aqueles que precisam de verdade.
+                    </strong>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <button type="submit" class="btn btn-success">Confirmar</button>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
