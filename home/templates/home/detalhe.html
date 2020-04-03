@@ -19,6 +19,11 @@
                              Nome: {{pedido.nome}}
                         </li>
                         <li class="list-group-item">
+                            <a target="_blank" href="https://api.whatsapp.com/send?phone=55{{pedido.getPhone}}&text=Ol%C3%A1%2C%20vi%20seu%20pedido%20de%20ajuda%20no%20AjudeJ%C3%A1.org%20e%20gostaria%20de%20ajudar.%20">
+                            Whatsapp: {{pedido.whatsapp}}    
+                            </a>
+                        </li>
+                        <li class="list-group-item">
                             Tipo de Pedido: {{pedido.categoria}}
                         </li>
                         <li class="list-group-item">

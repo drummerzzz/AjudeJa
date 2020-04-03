@@ -17,3 +17,6 @@ class Grantee(models.Model):
     descricao = models.TextField("Descreva o que você está precisando", null=True, blank=True)
     data = models.DateTimeField(auto_now_add=True)
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    def getPhone(self):
+        return self.whatsapp.replace('(','').replace(')','').replace('-','').replace(' ','')
