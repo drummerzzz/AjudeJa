@@ -4,7 +4,7 @@ from donatario.models import Grantee
 class GranteeForm(forms.ModelForm):
     class Meta:
         model = Grantee
-        exclude = ['data',]
+        exclude = ['data', 'atendido']
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
