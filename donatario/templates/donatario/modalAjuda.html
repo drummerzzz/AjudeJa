@@ -7,6 +7,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <strong class="px-2 text-center text-danger">Pessoas aqui estão passando por fome, dor e reais necessidades de sobrevivência, onde cada dia importa.
+                Portanto, só peça ajuda se REALMENTE estiver precisando para não atrapalhar aqueles que precisam de verdade.</strong>
             <form action="{% url 'donatario:ajuda' %}" class="form-group" method="post">
                 {% csrf_token %}
                 <div class="modal-body">

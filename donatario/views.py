@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.views.generic import CreateView
 from donatario.forms import GranteeForm
+from donatario.models import Grantee
 
 class DonatarioCreateView(CreateView):
     form_class = GranteeForm

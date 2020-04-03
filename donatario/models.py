@@ -16,7 +16,12 @@ class Grantee(models.Model):
     categoria = models.CharField("Escolha uma categoria", max_length=50, choices=CATEGORIA, default="Cesta Básica")
     descricao = models.TextField("Descreva o que você está precisando", null=True, blank=True)
     data = models.DateTimeField(auto_now_add=True)
+    atendido = models.BooleanField(default=False)
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def getPhone(self):
         return self.whatsapp.replace('(','').replace(')','').replace('-','').replace(' ','')
+    
+    def atender(self):
+        self.atendido = True
+        super().save()
