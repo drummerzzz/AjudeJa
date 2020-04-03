@@ -19,9 +19,17 @@ class Grantee(models.Model):
     atendido = models.BooleanField(default=False)
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
     
+    def __str__(self):
+        return '{} - {}'.format(self.titulo, self.situacao)
+    
     def getPhone(self):
         return self.whatsapp.replace('(','').replace(')','').replace('-','').replace(' ','')
     
     def atender(self):
         self.atendido = True
         super().save()
+    
+    def situacao(self):
+        if self.atendido:
+            return "atendido"
+        return "Não atendido"
