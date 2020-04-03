@@ -12,8 +12,8 @@
             <tr>
               <th scope="col">Pedido de ajuda</th>
               <th scope="col">Categoria</th>
-              <th scope="col">Nome</th>
-              <th scope="col">Data</th>
+              <!-- <th scope="col" class="d-none d-md-block">Nome</th>
+              <th scope="col" class="d-none d-md-block">Data</th> -->
               <!-- <th scope="col">Whatsapp</th> -->
               <th scope="col">Ajude já</th>
             </tr>
@@ -23,9 +23,11 @@
               <tr>
                 <td>{{pedido.titulo}}</td>
                 <td>{{pedido.categoria}}</td>
-                <td>{{pedido.nome}}</td>
-                <td>{{pedido.data |date:"d/m/Y H:i"}}</td>
-                <td><button class="btn btn-color">Ajude agora</button></td>
+                <!-- <td class="d-none d-sm-block">{{pedido.nome}}</td>
+                <td class="d-none d-sm-block">{{pedido.data |date:"d/m/Y"}}</td> -->
+                <td>
+                  <a href="{% url 'home:detalhe' %}?pedido={{pedido.id}}" class="btn btn-color btn-block text-white">Ajude agora</a>
+                </td>
               </tr>
             {% endfor %}
           </tbody>

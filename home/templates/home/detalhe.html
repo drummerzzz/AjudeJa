@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center font-weight-bold mt-2 mb-4">
+                <img class="img-fluid" src="{% static 'logo.png' %}">
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 px-md-4">
+            <div class="card">
+                <div class="card-body font-weight-bold">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                             Nome: {{pedido.nome}}
+                        </li>
+                        <li class="list-group-item">
+                            Tipo de Pedido: {{pedido.categoria}}
+                        </li>
+                        <li class="list-group-item">
+                            Data: {{pedido.data |date:"d/m/Y"}}
+                        </li>
+                        <li class="list-group-item">
+                            Título: {{pedido.titulo}}
+                        </li>
+                        <li class="list-group-item">
+                            Descrição: <br> 
+                            {% if pedido.descricao %}
+                            {{pedido.descricao}}
+                            {% else %}
+                                Sem descrição
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 px-md-4">
+            <div class="card">
+                <div class="card-body">
+                    
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum
+                        dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+                        id est
+                        laborum.
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
