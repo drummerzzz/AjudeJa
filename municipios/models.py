@@ -28,4 +28,4 @@ class Municipio(models.Model):
     uf_sigla = models.CharField(max_length=2)
    
     def __str__(self):
-        return '%s - %s' % (self.nome, self.uf_sigla)
+        return self.nome
