@@ -33,3 +33,6 @@ class DetailTemplateView(View):
         context["ajudado"] = True
         return render(request, self.template_name, context)
     
+
+class Base(TemplateView):
+    template_name = "baseUi.html"
