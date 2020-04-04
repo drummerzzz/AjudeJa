@@ -12,11 +12,13 @@
             <form action="{% url 'donatario:ajuda' %}" class="form-group" method="post">
                 {% csrf_token %}
                 <div class="modal-body">
-                    {% for field in form %}
+                    <!-- {% for field in form %}
                         {{field.label_tag}}
                         {{field}}
                         {{field.errors}}
-                    {% endfor %}
+                    {% endfor %} -->
+                    {{ form.media }}
+                    {{ form }}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>

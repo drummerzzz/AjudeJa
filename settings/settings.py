@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'doacao',
     'donatario',
     'home',
-    'users'
+    'users',
+    'municipios',
 ]
 
 MIDDLEWARE = [
