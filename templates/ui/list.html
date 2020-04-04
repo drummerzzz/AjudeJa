@@ -1,0 +1,21 @@
+<div class="ui padded segment">
+    <h1 class="ui centered aligned header">
+        <p>Pedidos de ajuda</p>
+    </h1>
+    <div class="ui container">
+        <div class="ui selection celled list">
+            {% for pedido in pedidos %}
+                <div class="item">
+                    <div class="content">
+                        <a  href="{% url 'home:detalhe' %}?pedido={{pedido.id}}" class="ui header">
+                            {{pedido.titulo}}
+                        </a>
+                        <div class="description">
+                            {{pedido.categoria}}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="ui vertical center aligned padded segment">
+    <h1 class="ui center aligned header" style="padding: 1em;">
+        Escolha uma pessoa para ajudar
+    </h1>
+    <div class="ui container">
+        <table class="ui middle aligned selection table">
+            <thead>
+                <tr>
+                    <th class="center aligned">Pedidos de ajuda</th>
+                    <th class="center aligned">Ajude já</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pedido in pedidos %}
+                <tr>
+                    <td>
+                        <div class="item">
+                            <div class="content">
+                                <a href="{% url 'home:detalhe' %}?pedido={{pedido.id}}" class="header">
+                                    {{pedido.titulo}}
+                                </a>
+                                <div class="description">
+                                    {{pedido.categoria}}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="right aligned collapsing">
+                        <a class="ui teal fluid button" href="{% url 'home:detalhe' %}?pedido={{pedido.id}}">
+                            Quero ajudar
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

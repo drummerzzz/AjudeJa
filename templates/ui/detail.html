@@ -1,0 +1,46 @@
+<div class="ui vertical padded segment">
+    <div class="ui container">
+        <div class="ui two stackable cards">
+            <div class="ui centered fluid card">
+                <div class="content">
+                    <div class="header">
+                        <p>Nome: {{pedido.nome}}</p>
+                        <p>Whatsapp: {{pedido.whatsapp}}</p>
+                        <p>Tipo de Pedido: {{pedido.categoria}}</p>
+                    </div>
+                    <div class="meta">
+                        Data: {{pedido.data |date:"d/m/Y"}}
+                    </div>
+                    <div class="description">
+                        Descrição: <br>
+                        {% if pedido.descricao %}
+                        {{pedido.descricao}}
+                        {% else %}
+                        Sem descrição
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="ui fluid card">
+                <div class="content">
+                    <div class="header">
+                        <p>Nome: {{pedido.nome}}</p>
+                        <p>Whatsapp: {{pedido.whatsapp}}</p>
+                        <p>Tipo de Pedido: {{pedido.categoria}}</p>
+                    </div>
+                    <div class="meta">
+                        Data: {{pedido.data |date:"d/m/Y"}}
+                    </div>
+                    <div class="description">
+                        Descrição: <br>
+                        {% if pedido.descricao %}
+                        {{pedido.descricao}}
+                        {% else %}
+                        Sem descrição
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
