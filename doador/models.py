@@ -4,4 +4,5 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class Donor(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    nome = models.CharField("Qual seu nome?", max_length=50, null=True)
+    whatsapp = models.CharField("Qual o número do seu Whatsapp?", max_length=20, null=True)

@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, View
 from donatario.forms import GranteeForm
 from donatario.models import Grantee
+from doador.models import Donor
+from doacao.models import Donation
 
 class HomeTemplateView(TemplateView):
     template_name = "home/home.html"
@@ -23,7 +25,7 @@ class ListTemplateView(TemplateView):
         return context
     
 
-class DetailTemplateView(View):
+class DetailView(View):
     
     template_name = "home/detail.html"
     
@@ -38,6 +40,14 @@ class DetailTemplateView(View):
         context = {}
         pedido_id = request.GET.get('pedido', None)
         pedido = Grantee.objects.filter(id=pedido_id)[0]
+        doador, created = Donor.objects.get_or_create(
+            nome=request.POST.get('nome'),
+            whatsapp=request.POST.get('whatsapp')
+        )
+        Donation.objects.create(
+            doador=doador,
+            donatario=pedido
+        )
         pedido.atender()
         context["pedido"] = pedido
         context["ajudado"] = True

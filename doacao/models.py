@@ -2,5 +2,11 @@ from django.db import models
 from django.conf import settings
 
 class Donation(models.Model):
-    name = models.CharField("Nome", max_length=50)
-    sexo = models.CharField("Sexo", max_length=1, choices=settings.SEXO_CHOICE)
+    doador = models.ForeignKey(
+            "doador.Donor", verbose_name="Doador",
+            on_delete=models.SET_NULL, blank=True, null=True
+        )
+    donatario = models.ForeignKey(
+        "donatario.Grantee", verbose_name="Donatario",
+        on_delete=models.SET_NULL, blank=True, null=True
+    )
