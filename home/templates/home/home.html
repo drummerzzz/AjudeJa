@@ -1,17 +1,5 @@
 {% extends "baseUi.html" %}
 
-{% if messages %}
-<div class="row">
-  <div class="col-12 pb-3">
-    {% for message in messages %}
-    <h5 class="text-success text-center">
-      <b>{{message}}</b>
-    </h5>
-    {% endfor %}
-  </div>
-</div>
-{% endif %}
-
 {% block content %}
 {% include "ui/header.html" %}
   <br><br> <br>

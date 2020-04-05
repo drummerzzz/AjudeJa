@@ -2,6 +2,15 @@
     <h1 class="ui center aligned header" style="padding: 1em;">
         Escolha uma pessoa para ajudar
     </h1>
+    {% if messages %}
+
+    {% for message in messages %}
+    <div class="ui green lage header">
+        <b>{{message}}</b>
+    </div>
+    {% endfor %}
+
+    {% endif %}
     <div class="ui container">
         <table class="ui middle aligned selection table">
             <thead>

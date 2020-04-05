@@ -23,7 +23,7 @@ class Grantee(models.Model):
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.titulo
+        return self.nome
     
     def getPhone(self):
         return self.whatsapp.replace('(','').replace(')','').replace('-','').replace(' ','')
