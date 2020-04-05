@@ -13,9 +13,19 @@ class HomeTemplateView(TemplateView):
         return context
 
 
+class ListTemplateView(TemplateView):
+    
+    template_name = "home/lista.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['pedidos'] = Grantee.objects.filter(atendido=False)
+        return context
+    
+
 class DetailTemplateView(View):
     
-    template_name = "home/detalhe.html"
+    template_name = "home/detail.html"
     
     def get(self, request, *args, **kwargs):
         context = {}
@@ -35,7 +45,7 @@ class DetailTemplateView(View):
     
 
 class Base(TemplateView):
-    template_name = "ui/base_cadastro.html"
+    template_name = "ui/cadastro.html"
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

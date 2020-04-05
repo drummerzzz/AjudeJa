@@ -6,7 +6,7 @@ from donatario.models import Grantee
 
 class DonatarioCreateView(CreateView):
     form_class = GranteeForm
-    template_name = "home/home.html"
+    template_name = "ui/cadastro.html"
     success_url = "/#ajuda"
     
     def get_success_url(self):

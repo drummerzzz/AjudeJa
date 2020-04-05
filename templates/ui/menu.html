@@ -1,22 +1,30 @@
 {% load static %}
-<div class="ui vertical masthead center aligned segment">
-  <div class="ui container">
-    <div class="ui large secondary pointing menu">
-      <a class="toc item">
-        <i class="sidebar icon"></i>
+
+<div class="ui container">
+  <div class="ui large secondary pointing menu">
+    <a class="toc item">
+      <i class="sidebar icon"></i>
+    </a>
+    <div class="item logo">
+      <a href="/" class="ui teal center aligned header ">
+        Ajudejá.org
       </a>
-      <a href="/" class="ui centered image logo">
-        <img class="ui mini image" src="{% static 'favicon.png' %}" alt="" srcset="">
-      </a>
-      <a href="/" class="header item">
-        <img class="ui centered mini image" src="{% static 'favicon.png' %}" alt="" srcset="">
-      </a>
-      <a class="item">
-        Inicio
-      </a>
-      <a class="item">Preciso de ajuda</a>
-      <a class="item">Quero ajudar</a>
-      <a class="item">Como funciona</a>
+      <!-- <img class="ui mini image" src="{% static 'favicon.png' %}" alt="" srcset="">       -->
     </div>
+    <a href="/" class="item">
+      <img class="ui mini image" src="{% static 'favicon.png' %}" alt="" srcset="">
+    </a>
+    <a href="/" class="item">
+      <b>Inicio</b>
+    </a>
+    <a href="{% url 'donatario:ajuda' %}" class="item">
+      <b>Preciso de ajuda</b>
+    </a>
+    <a href="{% url 'home:list' %}" class="item">
+      <b>Quero ajudar</b>
+    </a>
+    <!-- <a class="item">
+      <b>Como funciona?</b>
+    </a> -->
   </div>
 </div>

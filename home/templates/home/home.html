@@ -1,64 +1,20 @@
-{% extends "base.html" %}
+{% extends "baseUi.html" %}
 
-
-{% block content %}
-{% include "header.html" %}
-{% include "donatario/modalAjuda.html" %}
-<div id="ajuda" class="container-full px-md-5">
-  <div class="row mb-5">
-    <div class="col-12 text-center">
-      <h1 class="text-color display-4">
-        <strong style="font-weight: bolder;">Escolha uma pessoa para ajudar</strong>
-      </h1>
-    </div>
-  </div>
-  {% if messages %}
-  <div class="row">
-    <div class="col-12 pb-3">
-      {% for message in messages %}
-      <h5 class="text-success text-center">
-        <b>{{message}}</b>
-      </h5>
-      {% endfor %}
-    </div>
-  </div>
-  {% endif %}
-  <div class="row">
-    <div class="col-12 mt-2">
-      <div class="table-responsive">
-        <table class="table">
-          <thead style="background-color: #5fbfbf; color: white;">
-            <tr>
-              <th scope="col">Pedido de ajuda</th>
-              <th scope="col">Categoria</th>
-              <th scope="col">Ajude já</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for pedido in pedidos %}
-            <tr>
-              <td>{{pedido.titulo}}</td>
-              <td>{{pedido.categoria}}</td>
-              <td>
-                <a href="{% url 'home:detalhe' %}?pedido={{pedido.id}}"
-                class="btn btn-color btn-block text-white">
-                  Quero ajudar
-                </a>
-              </td>
-            </tr>
-            {% empty %}
-              <tr>
-                <td>
-                  <h4 class="text-center text-color">
-                    <strong>Que bom não tem ninguem precisando de ajuda. :)</strong>
-                  </h4>
-                </td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-    </div>
+{% if messages %}
+<div class="row">
+  <div class="col-12 pb-3">
+    {% for message in messages %}
+    <h5 class="text-success text-center">
+      <b>{{message}}</b>
+    </h5>
+    {% endfor %}
   </div>
 </div>
+{% endif %}
+
+{% block content %}
+{% include "ui/header.html" %}
+  <br><br> <br>
+{% include "ui/table.html" %}
+
 {% endblock content %}

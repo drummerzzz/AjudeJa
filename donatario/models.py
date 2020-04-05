@@ -12,6 +12,9 @@ CATEGORIA = (
 class Grantee(models.Model):
     nome = models.CharField("Qual seu nome?", max_length=50)
     whatsapp = models.CharField("Qual o número do seu Whatsapp?", max_length=20)
+    email = models.EmailField("Qual seu email?", max_length=254, null=True)
+    estado = models.CharField(max_length=200, null=True)
+    cidade = models.CharField(max_length=200, null=True)
     titulo = models.CharField("Qual o seu pedido de ajuda?", max_length=50)
     categoria = models.CharField("Escolha uma categoria", max_length=50, choices=CATEGORIA, default="Cesta Básica")
     descricao = models.TextField("Descreva o que você está precisando", null=True, blank=True)
