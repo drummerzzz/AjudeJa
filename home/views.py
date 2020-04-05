@@ -38,20 +38,23 @@ class DetailView(View):
 
     def post(self, request, *args, **kwargs):
         context = {}
-        pedido_id = request.GET.get('pedido', None)
-        pedido = Grantee.objects.filter(id=pedido_id)[0]
-        doador, created = Donor.objects.get_or_create(
-            nome=request.POST.get('nome'),
-            whatsapp=request.POST.get('whatsapp')
-        )
-        Donation.objects.create(
-            doador=doador,
-            donatario=pedido
-        )
-        pedido.atender()
-        context["pedido"] = pedido
-        context["ajudado"] = True
-        return render(request, self.template_name, context)
+        try:
+            pedido_id = request.GET.get('pedido', None)
+            pedido = Grantee.objects.filter(id=pedido_id)[0]
+            doador, created = Donor.objects.get_or_create(
+                nome=request.POST.get('nome'),
+                whatsapp=request.POST.get('whatsapp')
+            )
+            Donation.objects.create(
+                doador=doador,
+                donatario=pedido
+            )
+            pedido.atender()
+            context["pedido"] = pedido
+            return render(request, 'ui/obrigado.html', context)
+        except:
+            return render(request, self.template_name, context)
+        
     
 
 class Obrigado(TemplateView):
@@ -60,6 +63,6 @@ class Obrigado(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # context["form"] = GranteeF?orm()
-        # context['pedidos'] = Gr?antee.objects.all()
-        context['pedido'] = Grantee.objects.first()
+        id_pedido = self.request.GET.get('pedido')
+        context['pedido'] = Grantee.objects.filter(id=id_pedido)[0]
         return context
