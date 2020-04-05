@@ -1,0 +1,35 @@
+{% extends 'baseUi.html' %}
+
+{% block content %}
+  <div class="ui container">
+      <h1 class="ui center aligned green header" style="margin-top: 2em;">
+          Obrigado
+      </h1>
+      <a href="" class="ui green fluid button">
+          Chamar {{pedido.nome}} no whatsapp
+      </a>
+    <div class="ui fluid card" >
+        <div class="content left aligned">
+            <div class="ui header center aligned">
+                Guarde essas informações
+            </div>
+            <div class="header">
+                <p>Nome: {{pedido.nome}}</p>
+                <p>Whatsapp: {{pedido.whatsapp}}</p>
+                <p>Tipo de Pedido: {{pedido.categoria}}</p>
+            </div>
+            <div class="meta">
+                Data: {{pedido.data |date:"d/m/Y"}}
+            </div>
+            <div class="description">
+                Descrição: <br>
+                {% if pedido.descricao %}
+                {{pedido.descricao}}
+                {% else %}
+                Sem descrição
+                {% endif %}
+            </div>
+        </div>
+    </div>
+  </div>
+{% endblock content %}

@@ -54,12 +54,12 @@ class DetailView(View):
         return render(request, self.template_name, context)
     
 
-class Base(TemplateView):
-    template_name = "ui/cadastro.html"
+class Obrigado(TemplateView):
+    template_name = "ui/obrigado.html"
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["form"] = GranteeForm()
-        context['pedidos'] = Grantee.objects.all()
+        # context["form"] = GranteeF?orm()
+        # context['pedidos'] = Gr?antee.objects.all()
         context['pedido'] = Grantee.objects.first()
         return context
