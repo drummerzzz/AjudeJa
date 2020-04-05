@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Ajude Já </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'semantic/semantic.min.css' %}">
+    <link rel="icon" type="image/ico" href="{% static 'favicon.png' %}">
+    <link rel="stylesheet" href="https://unpkg.com/vue-select@latest/dist/vue-select.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="{% static 'semantic/semantic.min.js' %}"></script>
+    <style>
+        .hidden.menu {
+            display: none;
+        }
+
+        .secondary.pointing.menu .toc.item {
+            display: none;
+        }
+
+        .masthead .ui.menu .ui.button {
+            margin-left: 0.5em;
+        }
+
+        .logo {
+            display: none !important;
+        }
+
+        @media only screen and (max-width: 700px) {
+            .ui.fixed.menu {
+                display: none !important;
+            }
+
+            .secondary.pointing.menu .item,
+            .secondary.pointing.menu .menu {
+                display: none;
+            }
+
+            .logo {
+                display: block !important;
+            }
+
+            .secondary.pointing.menu .toc.item {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {% include "ui/sidebar.html" %}
+    <div class="pusher">
+        {% include "ui/menu.html" %}
+        <div id="app">
+            <form action="" method="get">
+                <input v-if="estado" type="hidden" name="estado" id="" :value="estado.nome">
+                <input v-if="cidade" type="hidden" name="estado" id="" :value="cidade.nome">
+
+                <v-select :placeholder="'Selecione seu estado'" v-model="estado" label="nome" :clearable="false"
+                    :options="estadosOptions" >
+                    <template #search="{attributes, events}">
+                        <input class="vs__search" :required="!estado"
+                        v-bind="attributes" v-on="events" />
+                    </template>
+                </v-select>
+
+                <v-select v-show="estado" :placeholder="'Selecione sua cidade'" v-model="cidade" label="nome"
+                    :clearable="false" :options="cidadeOptions">
+                    <template #search="{attributes, events}">
+                        <input class="vs__search" :required="!cidade" v-bind="attributes" v-on="events" />
+                    </template>
+                </v-select>
+                <button type="submit">Teste</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue-select@latest"></script>
+
+
+    <script>
+        Vue.component('v-select', VueSelect.VueSelect);
+        const vm = new Vue({
+            el: '#app',
+            delimiters: ['${', '}'],
+            data() {
+                return {
+                    api: 'https://servicodados.ibge.gov.br/api/v1/localidades/estados',
+                    estados: [],
+                    cidades: [],
+                    estado: undefined,
+                    cidade: undefined
+                }
+            },
+            methods: {
+                order(array) {
+                    // ordenando em orem alfabetica
+                    return array.sort((a, b) => {
+                        if (a.nome > b.nome) {
+                            return -1;
+                        }
+                        if (b.nome > a.nome) {
+                            return 1;
+                        }
+                        return 0;
+                    }).reverse()
+                }
+            },
+            computed: {
+                estadosOptions() {
+                    return this.order(this.estados)
+                },
+                cidadeOptions() {
+                    return this.order(this.cidades)
+                }
+            },
+            watch: {
+                estado: function (a, b) {
+                    this.cidade = undefined
+                    const self = this
+                    const api = `${this.api}/${this.estado.id}/municipios`
+                    axios.get(api).then(resp => {
+                        self.cidades = resp.data
+                    })
+                }
+            },
+            created() {
+                const self = this
+                axios.get(this.api).then(resp => {
+                    self.estados = resp.data
+                })
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>

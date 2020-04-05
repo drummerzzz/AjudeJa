@@ -35,7 +35,7 @@ class DetailTemplateView(View):
     
 
 class Base(TemplateView):
-    template_name = "baseUi.html"
+    template_name = "ui/base_cadastro.html"
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
