@@ -1,23 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Ajude Já </title>
     <link rel="stylesheet" type="text/css" href="{% static 'semantic/semantic.min.css' %}">
     <link rel="icon" type="image/ico" href="{% static 'favicon.png' %}">
-    <script
-    src="https://code.jquery.com/jquery-3.1.1.min.js"
-    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="{% static 'semantic/semantic.min.js' %}"></script>
-    
+    <style>
+        .hidden.menu {
+            display: none;
+        }
+
+        .secondary.pointing.menu .toc.item {
+            display: none;
+        }
+
+        .masthead .ui.menu .ui.button {
+            margin-left: 0.5em;
+        }
+
+        .logo {
+            display: none !important;
+        }
+
+        @media only screen and (max-width: 700px) {
+            .ui.fixed.menu {
+                display: none !important;
+            }
+
+            .secondary.pointing.menu .item,
+            .secondary.pointing.menu .menu {
+                display: none;
+            }
+            .logo {
+                display: block !important;
+            }
+            .secondary.pointing.menu .toc.item {
+                display: block;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    {% include "ui/menu.html" %}
+    {% include "ui/sidebar.html" %}
+    <div class="pusher">
+        {% include "ui/menu.html" %}
+        {% block content %}
+
+        {% endblock content %}
+    </div>
     {% include "ui/detail.html" %}
     <!-- {% include "ui/header.html" %}
     {% include "ui/table.html" %} -->
+
 </body>
+
 </html>

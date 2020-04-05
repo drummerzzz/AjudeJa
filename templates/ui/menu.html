@@ -1,24 +1,26 @@
-<div class="ui container">
-  <div class="ui teal medium menu">
-    <a class="active item">
-      Inicio
-    </a>
-    <a class="item">
-      Preciso de ajuda
-    </a>
-    <a class="item">
-      Quero ajudar
-    </a>
-    <div class="item">
-      Como Funciona?
+{% load static %}
+<div class="ui vertical masthead center aligned segment">
+  <div class="ui container">
+    <div class="ui large secondary pointing menu">
+      <a class="toc item">
+        <i class="sidebar icon"></i>
+      </a>
+      <a href="/" class="ui centered image logo">
+        <img class="ui centered mini image" src="{% static 'favicon.png' %}" alt="" srcset="">
+      </a>
+      <a href="/" class="header item">
+        <img class="ui centered mini image" src="{% static 'favicon.png' %}" alt="" srcset="">
+      </a>
+      <a class="item">
+        Inicio
+      </a>
+      <a class="item">Preciso de ajuda</a>
+      <a class="item">Quero ajudar</a>
+      <a class="item">Como funciona</a>
+      <!-- <div class="right item">
+              <a class="ui inverted button">Log in</a>
+              <a class="ui inverted button">Sign Up</a>
+          </div> -->
     </div>
-    <!-- <div class="right menu">
-      <a class="ui item">
-        Quem somos
-      </a>
-      <a class="ui item">
-        Parceiros
-      </a>
-    </div> -->
   </div>
 </div>

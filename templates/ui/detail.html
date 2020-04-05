@@ -1,8 +1,32 @@
-<div class="ui vertical padded segment">
+<div class="ui vertical center aligned padded segment">
     <div class="ui container">
-        <div class="ui two stackable cards">
-            <div class="ui centered fluid card">
-                <div class="content">
+        <div class="ui grid" style="margin-bottom: 0.5em; margin-top: 0.1em;">
+            <div class="column">
+                <div class="ui fluid card">
+                    <div class="content center aligned">
+                        <div class="header">
+                            <h2 class="ui blue header">
+                                <strong>SUGESTÃO</strong>
+                            </h2>
+
+                        </div>
+                        <div class="description">
+                            Caso não tenha condições de ajudar sozinho(a),
+                            você pode criar um grupo no WhatsApp com {{pedido.nome}}
+                            e convidar seus amigos para se juntarem a esta causa.
+                        </div>
+                        <div class="extra content">
+                            <p class="ui small header">
+                                <strong>“Não importa o valor da doação mas sim o valor da sua atitude!”</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui stackable two cards">
+            <div class="ui fluid card">
+                <div class="content left aligned">
                     <div class="header">
                         <p>Nome: {{pedido.nome}}</p>
                         <p>Whatsapp: {{pedido.whatsapp}}</p>
@@ -22,25 +46,66 @@
                 </div>
             </div>
             <div class="ui fluid card">
-                <div class="content">
+                <div class="content left aligned">
                     <div class="header">
-                        <p>Nome: {{pedido.nome}}</p>
-                        <p>Whatsapp: {{pedido.whatsapp}}</p>
-                        <p>Tipo de Pedido: {{pedido.categoria}}</p>
+                        <h2 class="ui red header center aligned">ATENÇÃO</h2>
+                        <p class="ui grey small header">
+                            Ao confirmar a ajuda, este pedido não estará mais disponível na lista,
+                            e outras pessoas não poderão mais vê-lo.
+                        </p>
                     </div>
-                    <div class="meta">
-                        Data: {{pedido.data |date:"d/m/Y"}}
+                    <div class="ui small center aligned header">
+                        Confirmando, você está assumindo o compromisso moral de ajudar!
                     </div>
-                    <div class="description">
-                        Descrição: <br>
-                        {% if pedido.descricao %}
-                        {{pedido.descricao}}
-                        {% else %}
-                        Sem descrição
-                        {% endif %}
+                    <div class="extra content">
+                        <button id="conf" class="ui teal fluid button">
+                            <i class="heart large icon"></i>
+                            Eu confirmo que vou ajudar e vou conversar com {{pedido.nome}} pelo whatsapp
+                        </button>
+                        <a class="ui blue fluid large button" href="/#ajuda" style="margin-top: 0.2em;">
+                            <i class="arrow left icon"></i>
+                            Voltar para a lista
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="pedido" value="{{pedido.id}}">
+</form>
+
+<div class="ui small center aligned modal">
+    <i class="close icon"></i>
+    <div class="ui red center aligned header">
+        ATENÇÃO
+    </div>
+    <div class="content">
+        <div class="ui description">
+            <p class="ui small center aligned header">
+                <strong>Você está assumindo o compromisso moral de ajudar!</strong>
+            </p>
+            <p class="ui center aligned header"><strong>Deseja continuar?</strong></p>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui red button">Cancelar</div>
+        <button id="btn-submit" class="ui green button">Continuar</button>
+    </div>
+</div>
+
+<script>
+    $('#btn-submit').click(function(){
+        $('form').submit()
+    })
+    $('#conf').click(function () {
+        $('.ui.modal').modal({
+            centered: true
+        })
+            .modal('setting', 'closable', false)
+            .modal('show')
+    })
+</script>
