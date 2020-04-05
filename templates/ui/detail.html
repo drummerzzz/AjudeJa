@@ -73,34 +73,43 @@
     </div>
 </div>
 
-<form action="" method="post">
-    {% csrf_token %}
-    <input type="hidden" name="pedido" value="{{pedido.id}}">
-</form>
 
-<div class="ui small center aligned modal">
+
+
+<form action="" method="post" class="ui form small center aligned modal">
     <i class="close icon"></i>
     <div class="ui red center aligned header">
         ATENÇÃO
     </div>
-    <div class="content">
-        <div class="ui description">
-            <p class="ui small center aligned header">
-                <strong>Você está assumindo o compromisso moral de ajudar!</strong>
-            </p>
-            <p class="ui center aligned header"><strong>Deseja continuar?</strong></p>
+    <div class="ui center aligned header">
+        <p class="ui grey small center aligned header">
+            <strong>Você está assumindo o compromisso moral de ajudar!</strong>
+        </p>
+        <p class="ui grey tiny center aligned header">
+            Nós avisaremos {{pedido.nome}} que você esta disposto(a) ajudar
+        </p>
+    </div>
+    <div class="content ui form">
+        {% csrf_token %}
+        <input type="hidden" name="pedido" value="{{pedido.id}}">
+        <div class="field">
+            <label for="">Qual seu Nome?</label>
+            <input required type="text" name="nome" id="">
+        </div>
+        <div class="field">
+            <label for="">WhatsApp</label>
+            <input required type="text" name="whatsapp" id="id_whatsapp">
         </div>
     </div>
     <div class="actions">
         <div class="ui red button">Cancelar</div>
-        <button id="btn-submit" class="ui green button">Continuar</button>
+        <button type="submit" class="ui green button">Continuar</button>
     </div>
-</div>
+</form>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <script>
-    $('#btn-submit').click(function(){
-        $('form').submit()
-    })
+    $('#id_whatsapp').mask('(99) 99999-9999')
     $('#conf').click(function () {
         $('.ui.modal').modal({
             centered: true
