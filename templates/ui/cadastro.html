@@ -76,7 +76,7 @@
                             <div class="ui large center aligned header">
                                 Cadastre-se
                             </div>
-                            <form action="{% url 'donatario:ajuda' %}" method="post">
+                            <form action="{% url 'donatario:ajuda' %}" method="post" autocomplete="off">
                                 {% csrf_token %}
                                 <div class="ui form">
                                     <div class="field">
