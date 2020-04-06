@@ -107,6 +107,7 @@
                                         :clearable="false" :options="estadosOptions">
                                         <template #search="{attributes, events}">
                                             <input class="vs__search" name="state" :required="!estado"
+                                            autocomplete="off"
                                                 v-bind="attributes" v-on="events" />
                                         </template>
                                     </v-select>
@@ -120,6 +121,7 @@
                                         label="nome" :clearable="false" :options="cidadeOptions">
                                         <template #search="{attributes, events}">
                                             <input class="vs__search" :required="!cidade" v-bind="attributes"
+                                                autocomplete="off"
                                                 v-on="events" />
                                         </template>
                                     </v-select>
