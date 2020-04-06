@@ -106,8 +106,9 @@
                                     <v-select :placeholder="'Selecione seu estado'" v-model="estado" label="nome"
                                         :clearable="false" :options="estadosOptions">
                                         <template #search="{attributes, events}">
-                                            <input class="vs__search" name="state" :required="!estado"
-                                            autocomplete="off"
+                                            <input class="vs__search" type="text" name="" id="">
+                                            <input type="hidden" name="1"class="vs__search" name="state" :required="!estado"
+                                            autocomplete="off" aria-autocomplete="off"
                                                 v-bind="attributes" v-on="events" />
                                         </template>
                                     </v-select>
@@ -120,8 +121,9 @@
                                     <v-select :disabled="!estado" :placeholder="'Selecione sua cidade'" v-model="cidade"
                                         label="nome" :clearable="false" :options="cidadeOptions">
                                         <template #search="{attributes, events}">
-                                            <input class="vs__search" :required="!cidade" v-bind="attributes"
-                                                autocomplete="off"
+                                            <input class="vs__search" type="text" name="" id="">
+                                            <input type="hidden" name="1" class="vs__search" :required="!cidade" v-bind="attributes"
+                                                autocomplete="off" aria-autocomplete="off"
                                                 v-on="events" />
                                         </template>
                                     </v-select>
