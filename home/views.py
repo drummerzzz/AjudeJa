@@ -27,7 +27,7 @@ class ListTemplateView(TemplateView):
         if estado:
             pedidos = pedidos.filter(estado=estado)
 
-        if estado:
+        if cidade:
             pedidos = pedidos.filter(cidade=cidade)
 
         context['pedidos'] = pedidos
