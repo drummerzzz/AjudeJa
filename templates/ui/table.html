@@ -1,17 +1,8 @@
 <div class="ui vertical center aligned padded segment">
-    <h1 class="ui center aligned header" style="padding: 1em;">
-        Escolha uma pessoa para ajudar
-    </h1>
-    {% if messages %}
-
-    {% for message in messages %}
-    <div class="ui green lage header">
-        <b>{{message}}</b>
-    </div>
-    {% endfor %}
-
-    {% endif %}
     <div class="ui container">
+        
+        {% if pedidos %}
+            
         <table class="ui middle aligned selection table">
             <thead>
                 <tr>
@@ -43,5 +34,19 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% else %}
+            <div class="ui fluid card">
+                <div class="content">
+                    <h2 style="margin: 1em;" class="ui header">Nenhum pedido encontrado</h2>
+                    
+                    {% if request.GET.estado or request.GET.cidade %}
+                        <a href="{% url 'home:list' %}" class="ui blue fluid button">
+                            Ver todos os pedidos
+                        </a>
+                    {% endif %}
+                        
+                </div>
+            </div>
+        {% endif %}
     </div>
 </div>

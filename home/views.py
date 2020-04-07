@@ -17,11 +17,20 @@ class HomeTemplateView(TemplateView):
 
 class ListTemplateView(TemplateView):
     
-    template_name = "home/lista.html"
+    template_name = "ui/filtro.html"
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['pedidos'] = Grantee.objects.filter(atendido=False)
+        pedidos = Grantee.objects.filter(atendido=False)
+        estado = self.request.GET.get('estado', None)
+        cidade = self.request.GET.get('cidade', None)
+        if estado:
+            pedidos = pedidos.filter(estado=estado)
+
+        if estado:
+            pedidos = pedidos.filter(cidade=cidade)
+
+        context['pedidos'] = pedidos
         return context
     
 
